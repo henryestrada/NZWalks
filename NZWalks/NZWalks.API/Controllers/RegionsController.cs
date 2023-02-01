@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using NZWalks.API.Models.Domain;
+using NZWalks.API.Models.DTO;
 using NZWalks.API.Repositories;
 
 namespace NZWalks.API.Controllers;
@@ -65,15 +66,7 @@ public class RegionsController : Controller
     public async Task<IActionResult> AddRegionAsync(Models.DTO.AddRegionRequest addRegionrequest)
     {
         // Request to Domain model
-        var region = new Models.Domain.Region
-        {
-            Code = addRegionrequest.Code,
-            Area = addRegionrequest.Area,
-            Lat = addRegionrequest.Lat,
-            Long = addRegionrequest.Long,
-            Name = addRegionrequest.Name,
-            Population = addRegionrequest.Population
-        };
+        var region = _mapper.Map<Models.Domain.Region>(addRegionrequest);
 
         // Pass details Repository
         region = await _regionRepository.AddAsync(region);
@@ -108,15 +101,7 @@ public class RegionsController : Controller
     public async Task<IActionResult> UpdateRegionAsync([FromRoute] Guid id, [FromBody] Models.DTO.UpdateRegionRequest updateRegionRequest)
     {
         // Convert DTO to Domain model
-        var region = new Region
-        {
-            Code = updateRegionRequest.Code,
-            Name = updateRegionRequest.Name,
-            Area = updateRegionRequest.Area,
-            Lat = updateRegionRequest.Lat,
-            Long = updateRegionRequest.Long,
-            Population = updateRegionRequest.Population
-        };
+        var region = _mapper.Map<Models.Domain.Region>(updateRegionRequest);
 
         // Update Region using repository
         region = await _regionRepository.UpdateAsync(id, region);

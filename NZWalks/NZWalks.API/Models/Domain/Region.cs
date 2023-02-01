@@ -2,13 +2,6 @@
 
 public class Region
 {
-    public Region()
-    {
-        Code = string.Empty;
-        Name = string.Empty;
-        Walks = new List<Walk>();
-    }
-
     public Guid Id { get; set; }
     public string Code { get; set; }
     public string Name { get; set; }
@@ -18,6 +11,6 @@ public class Region
     public long Population { get; set; }
 
     // Navigation property
-    public IEnumerable<Walk> Walks { get; set; }
+    //public IEnumerable<Walk> Walks { get; set; }
 
 }

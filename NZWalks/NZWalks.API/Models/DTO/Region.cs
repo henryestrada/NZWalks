@@ -1,16 +1,7 @@
-﻿using NZWalks.API.Models.Domain;
-
-namespace NZWalks.API.Models.DTO;
+﻿namespace NZWalks.API.Models.DTO;
 
 public class Region
 {
-    public Region()
-    {
-        Code = string.Empty;
-        Name = string.Empty;
-        Walks = new List<Walk>();
-    }
-
     public Guid Id { get; set; }
     public string Code { get; set; }
     public string Name { get; set; }

@@ -58,7 +58,7 @@ public class SqlRegionRepository : IRegionRepository
         existingRegion.Long = region.Long;
         existingRegion.Population = region.Population;
 
-        _nZWalksDbContext.SaveChanges();
+        await _nZWalksDbContext.SaveChangesAsync();
 
         return existingRegion;
     }
